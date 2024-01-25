@@ -8,19 +8,9 @@ import ProductDetail from '@/components/products/ProductDetail'
 
 
 export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
-
     if (!params.slug) redirect("/products")
 
-    const queryClient = new QueryClient()
+    const product = await getProductBySlug(params.slug)
 
-    await queryClient.prefetchQuery({
-      queryKey: ["product"],
-      queryFn: () => getProductBySlug(params.slug)
-    })
-
-    return (
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <ProductDetail slug={ params.slug } />
-      </HydrationBoundary>
-    )
+    return <ProductDetail product={ product } slug={ params.slug } />
 }

@@ -8,10 +8,11 @@ import { getProducts } from '@/components/products/services'
 
 import ProductCard, { ProductCardProps } from "@/components/products/ProductCard"
 
-export default function ProductList() {
+export default function ProductList({ products }: any) {
     const { data, error } = useQuery({
         queryKey: ['products'],
         queryFn: () => { return getProducts() },
+        initialData: products
     })
 
     if (error) return 'An error has occurred: ' + error.message

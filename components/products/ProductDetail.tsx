@@ -9,16 +9,13 @@ import { useToast } from '@chakra-ui/react'
 import { getProductBySlug } from './services'
 
 
-interface Context {
-    slug: string
-}
-
-export default function ProductDetail({ slug }: Context) {
+export default function ProductDetail({ product, slug }: any) {
     const toast = useToast()
 
     const { data, error } = useQuery({
         queryKey: ['product'],
         queryFn: () => { return getProductBySlug(slug) },
+        initialData: product
     })
 
     if (error) return 'An error has occurred: ' + error.message
