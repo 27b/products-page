@@ -1,8 +1,14 @@
-interface ProductResponse {
+import { ProductCardProps } from "./ProductCard"
+
+interface ProductsResponse {
     products: Array<object>
 }
 
-export const getProducts = (): Promise<ProductResponse> => {
+interface ProductResponse {
+    result: ProductCardProps
+}
+
+export const getProducts = (): Promise<ProductsResponse> => {
     return fetch('http://localhost:3000/api/products').then((res) => res.json(),)
 }
 
