@@ -2,7 +2,7 @@ import { ProductCardProps } from "./ProductCard"
 
 const PRODUCTION = true
 
-const ENVIROMENT = 'http://localhost:3000' ? PRODUCTION : 'https://products-page-roan.vercel.app'
+const ENVIROMENT =  PRODUCTION ? 'https://products-page-roan.vercel.app' : 'http://localhost:3000'
 
 interface ProductsResponse {
     products: Array<object>
