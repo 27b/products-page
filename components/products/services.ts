@@ -9,9 +9,9 @@ interface ProductResponse {
 }
 
 export const getProducts = (): Promise<ProductsResponse> => {
-    return fetch('http://localhost:3000/api/products').then((res) => res.json(),)
+    return fetch('/api/products').then((res) => res.json(),)
 }
 
 export const getProductBySlug = (slug: string): Promise<ProductResponse> => {
-    return fetch('http://localhost:3000/api/products/' + slug).then((res) => res.json(),)
+    return fetch('/api/products/' + slug).then((res) => res.json(),)
 }
