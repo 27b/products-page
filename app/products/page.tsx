@@ -10,7 +10,7 @@ export default async function ProductListPage() {
 
     await queryClient.prefetchQuery({
       queryKey: ["products"],
-      queryFn: getProducts
+      queryFn: async () => { await getProducts() }
     })
 
     return (
